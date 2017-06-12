@@ -1,0 +1,191 @@
+html {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/*COMMON*/
+
+
+/*Make items divide available space equally*/
+
+.flex {
+    flex: 1;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+
+/*BODY*/
+
+body {
+    padding-top: 57px;
+    height: 100%;
+}
+
+
+/*MAIN PANEL*/
+
+#main-panel {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+}
+
+
+/*Use full available height*/
+
+.full-height {
+    height: 100%;
+}
+
+.list-group-item {
+    padding: 2px 4px;
+}
+
+.list-group-item,
+.list-group-item:first-child,
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.bootstrap-select>*,
+#sign-in-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+
+/*IMAGES*/
+
+img.gray {
+    filter: gray;
+    /* IE6-9 */
+    filter: grayscale(1);
+    /* Microsoft Edge and Firefox 35+ */
+    -webkit-filter: grayscale(1);
+    /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+
+/* Disable grayscale on hover */
+
+img.gray:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+
+/*VIEWER*/
+
+#viewer-container {
+    flex-basis: 100%;
+    padding: 0;
+}
+
+#forge-viewer {
+    /* keeps the viewer inside div*/
+    position: relative;
+    height: 100%;
+    margin: 0;
+}
+
+
+/*MENU BAR*/
+
+.navbar {
+    border-bottom-style: outset;
+}
+
+.navbar-btn {
+    margin-left: 8px;
+}
+
+.navbar-collapse>ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navbar-select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.navbar-nav>li>a {
+    padding: 8px;
+}
+
+#sign-in-btn {
+    margin-right: 15px;
+}
+
+#sign-in-profile-image {
+    border-radius: 4px;
+}
+
+
+/*FOOTER*/
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    /* Center align text */
+    line-height: 30px;
+    text-align: center;
+    border-top-style: groove;
+    border-top-width: 1px;
+}
+
+
+/*MEDIA QUERIES*/
+
+
+/*https://www.sitepoint.com/responsive-web-design-tips-bootstrap-css/*/
+
+
+/*Extra small devices*/
+
+@media (max-width: 768px) {
+    /*Adjust padding (navbar height decreases)*/
+    body {
+        padding-top: 51px;
+    }
+    /*Hide footer*/
+    .footer {
+        display: none;
+    }
+    /*Put the sidebar under the viewer*/
+    #main-panel {
+        flex-direction: column;
+        padding-bottom: 0;
+    }
+    /*Add viewer bottom border*/
+    #viewer-container {
+        border-bottom-style: ridge;
+    }
+}
+
+
+/*Small devices*/
+
+@media (min-width: 769px) and (max-width: 991px) {}
+
+
+/*Medium-sized devices*/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+
+/*Large devices*/
+
+@media (min-width: 1200px) {}

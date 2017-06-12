@@ -1,0 +1,30 @@
+/*Custom vertical toolbar inside Forge viewer*/
+
+#vertical-toolbar-container {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  z-index: 1;
+  /*Larger glyph icons*/
+  font-size: 2em;
+}
+
+
+/*Rearrange horizontal layout to vertical layout*/
+
+#vertical-toolbar .adsk-button-arrow {
+  transform: rotate(90deg);
+  top: -15px;
+  right: -15px;
+}
+
+.views-btn .toolbar-vertical-group {
+  display: flex;
+  flex-direction: row;
+  left: 125%;
+  bottom: -5px;
+}
+
+.views-btn .adsk-control-tooltip {
+  bottom: -30px;
+}

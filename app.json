@@ -1,0 +1,21 @@
+{
+  "name": "forge.multi",
+  "logo": "",
+  "keywords": [
+    "autodesk",
+    "forge",
+    "nois"
+  ],
+  "env": {
+    "FORGE_CLIENT_ID": {
+      "description": "Forge Client ID"
+    },
+    "FORGE_CLIENT_SECRET": {
+      "description": "Forge Client Secret"
+    },
+    "FORGE_CALLBACK_URL": {
+      "description": "Callback URL of your Forge app, required for 3-legged OAuth"
+    }
+  },
+  "success_url": "/"
+}
