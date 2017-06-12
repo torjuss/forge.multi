@@ -52,23 +52,47 @@ router.post('/forge/sendToTranslation', function (req, res) {
     return;
   }
 
+  var userSession = new user(req.session);
   var mdClient = ForgeModelDerivative.ApiClient.instance;
   var mdOAuth = mdClient.authentications['oauth2_access_code'];
   mdOAuth.accessToken = tokenSession.getTokenInternal();
 
+  var versionId = req.body.versionId;
   var versionUrn = req.body.versionId.toBase64();
   var derivativesApi = new ForgeModelDerivative.DerivativesApi();
-  derivativesApi.translate(createTranslateJob(versionUrn, 'svf'), null, function (error, data, response) {
+
+  derivativesApi.getManifest(versionUrn, null, function (error, data, response) {
     if (error) {
       res.status(500).end(error);
     } else {
-      // Send the URN to the client and inform that translating is in progress.
-      res.status(200).json({
-        status: 'info',
-        readyToShow: false,
-        message: 'Translation to SVF in progress, please wait...',
-        urn: versionUrn,
-      });
+      var returnValue = {};
+      var manifest = data;
+      if (manifest.status == 'success') {
+        returnValue.rootGuid = getRootGuid(manifest);
+        userSession.setDefaultModel(versionId);
+
+        returnValue.status = manifest.status;
+        returnValue.readyToShow = true;
+        returnValue.message = 'Model ready';
+        returnValue.urn = versionUrn;
+
+        res.status(200).json(returnValue);
+        return;
+      } else {
+        derivativesApi.translate(createTranslateJob(versionUrn, 'svf'), null, function (error, data, response) {
+          if (error) {
+            res.status(500).end(error);
+          } else {
+            // Send the URN to the client and inform that translating is in progress.
+            res.status(200).json({
+              status: 'info',
+              readyToShow: false,
+              message: 'Translation to SVF in progress, please wait...',
+              urn: versionUrn,
+            });
+          }
+        });
+      }
     }
   });
 });
