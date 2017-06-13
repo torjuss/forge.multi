@@ -2,6 +2,7 @@ import 'font-awesome/css/font-awesome.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-select/css/bootstrap-select.css';
 import 'css/main.css';
+import 'css/forge.white.toolbar.css';
 
 import 'img/nois.svg';
 import 'img/autodesk-logo.png';
